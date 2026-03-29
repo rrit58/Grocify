@@ -1,73 +1,66 @@
-# React + TypeScript + Vite
+# 🛒 Grocify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, full-stack grocery shopping web application designed to make buying daily essentials quick, easy, and aesthetically pleasing.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Frontend
+- **Framework:** React 19 (via Vite)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS & Shadcn UI
+- **Routing:** React Router DOM
+- **Icons:** Lucide React
 
-## React Compiler
+### Backend
+- **Runtime:** Node.js
+- **Framework:** Express.js
+- **Middleware:** CORS, dotenv
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
+- **Categorized Products:** Browse through fresh categories like Fruits, Vegetables, and Non-Veg.
+- **Search Capabilities:** Quickly find the exact products you are looking for.
+- **Featured Items:** Discover handpicked and highly-rated featured products.
+- **User Profiles:** Manage accounts and preferences.
+- **Responsive Design:** A beautiful and fully responsive UI for desktop, tablet, and mobile.
 
-## Expanding the ESLint configuration
+## 🛠️ Installation & Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) and Git installed on your system.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+```bash
+git clone https://github.com/rrit58/Grocify.git
+cd Grocify
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Backend Setup
+Navigate to the backend directory, install the required packages, and define your environment variables.
+```bash
+cd backend
+npm install
 ```
+Create a `.env` file in the `backend` folder and add:
+```env
+PORT=5000
+```
+Start the development server:
+```bash
+npm run dev
+```
+The backend should now be running on `http://localhost:5000`.
+
+### 3. Frontend Setup
+Open a new terminal window, navigate to the frontend directory, and run the app.
+```bash
+cd frontend
+npm install
+npm run dev
+```
+The frontend should now be running (usually on `http://localhost:5173`).
+
+## 🤝 Contributing
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you want to contribute.
+
+## 📄 License
+This project is licensed under the ISC License.
