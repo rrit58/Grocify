@@ -1,5 +1,6 @@
+import { useTheme } from "./theme-provider"
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { Search, User, ShoppingCart } from 'lucide-react'
+import { Search, User, ShoppingCart, Sun, Moon } from 'lucide-react'
 import favicon from "/favicon.png"
 
 const totalItems = 44;
@@ -13,11 +14,12 @@ const links = [
 ];
 
 const Navbar = () => {
+    const { theme, setTheme } = useTheme();
     const navigate = useNavigate();
     const location = useLocation();
     
     return (
-        <nav className='sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border'>
+        <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
             <div className='flex justify-between container mx-auto px-4 lg:px-8 h-16 lg:h-20 items-center'>
                 {/* Logo */}
                 <Link to="/" className='flex items-center'>
@@ -40,6 +42,12 @@ const Navbar = () => {
 
                 {/* Action */}
                 <div className='flex gap-5 items-center'>
+                    <button
+                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                        className='hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-secondary transition-colors'
+                    >
+                        {theme === "dark" ? <Sun className="w-5 h-5 text-foreground" /> : <Moon className="w-5 h-5 text-foreground" />}
+                    </button>
                     <button
                         onClick={() => navigate("/search")}
                         className="hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-secondary transition-colors"
