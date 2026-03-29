@@ -1,4 +1,3 @@
-import React from 'react'
 import catFruits from "@/assets/cat-fruits.png";
 import catVeggies from "@/assets/cat-veggies.png";
 import catNonveg from "@/assets/cat-nonveg.png";

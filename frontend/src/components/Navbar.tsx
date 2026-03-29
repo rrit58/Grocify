@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Search, User, ShoppingCart } from 'lucide-react'
 import favicon from "/favicon.png"
