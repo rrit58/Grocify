@@ -29,18 +29,20 @@ const Categories = () => {
           {categories.map((cat) => (
             <button
               key={cat.name}
-              className={`group relative rounded-2xl ${cat.bg} p-6 flex flex-col items-center text-center transition-shadow hover:shadow-card-hover cursor-pointer`}
+              className="group relative bg-card rounded-2xl border border-border p-6 flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 cursor-pointer"
             >
-              <img
-                src={cat.image}
-                alt={cat.name}
-                loading="lazy"
-                width={512}
-                height={512}
-                className="w-24 h-24 lg:w-32 lg:h-32 object-contain mb-4 group-hover:scale-110 transition-transform duration-300"
-              />
-              <h3 className="font-display font-semibold text-foreground text-lg">{cat.name}</h3>
-              <p className="text-xs text-muted-foreground mt-1">{cat.count}</p>
+              <div className={`w-24 h-24 lg:w-32 lg:h-32 rounded-full ${cat.bg} flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110`}>
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  loading="lazy"
+                  width={512}
+                  height={512}
+                  className="w-16 h-16 lg:w-24 lg:h-24 object-contain drop-shadow-sm"
+                />
+              </div>
+              <h3 className="font-display font-semibold text-foreground text-lg group-hover:text-primary transition-colors">{cat.name}</h3>
+              <p className="text-sm text-muted-foreground mt-1">{cat.count}</p>
             </button>
           ))}
         </div>
