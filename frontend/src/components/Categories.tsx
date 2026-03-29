@@ -4,10 +4,10 @@ import catNonveg from "@/assets/cat-nonveg.png";
 import catDairy from "@/assets/cat-dairy.png";
 
 const categories = [
-  { name: "Fruits", image: catFruits, count: "24 items", bg: "bg-orange-50" },
-  { name: "Vegetables", image: catVeggies, count: "32 items", bg: "bg-green-50" },
-  { name: "Dairy", image: catDairy, count: "15 items", bg: "bg-yellow-50" },
-  { name: "Meat & Eggs", image: catNonveg, count: "18 items", bg: "bg-red-50" },
+  { name: "Fruits", image: catFruits, count: "24 items", bg: "bg-orange-50 dark:bg-orange-950/30" },
+  { name: "Vegetables", image: catVeggies, count: "32 items", bg: "bg-green-50 dark:bg-green-950/30" },
+  { name: "Dairy", image: catDairy, count: "15 items", bg: "bg-yellow-50 dark:bg-yellow-950/30" },
+  { name: "Meat & Eggs", image: catNonveg, count: "18 items", bg: "bg-red-50 dark:bg-red-950/30" },
 ];
 
 const Categories = () => {

@@ -12,16 +12,16 @@ const links = [
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-primary-foreground">
+    <footer className="bg-green-950 text-white">
       <div className='container mx-auto px-4 lg:px-8 py-4 lg:py-6'>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-15">
           {/* Brand */}
           <div>
             <Link to="/" className='flex items-center'>
               <img src={favicon} alt="Favicon" className='h-18 w-18 object-cover rounded-full' />
-              <span className="text-xl font-bold text-green-700">Grocify</span>
+              <span className="text-xl font-bold text-green-700 dark:text-green-500">Grocify</span>
             </Link>
-            <p className="text-primary-foreground/60 text-sm leading-relaxed">
+            <p className="text-white/60 text-sm leading-relaxed">
               Your trusted online grocery store delivering fresh fruits, vegetables, meats, and dairy to your doorstep.
             </p>
           </div>
@@ -32,7 +32,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {links.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                  <Link to={link.to} className="text-sm text-white/60 hover:text-white transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -46,7 +46,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {["Fruits", "Vegetables", "Meat & Poultry", "Eggs", "Dairy"].map((link) => (
                 <li key={link}>
-                  <Link to="/categories" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                  <Link to="/categories" className="text-sm text-white/60 hover:text-white transition-colors">
                     {link}
                   </Link>
                 </li>
@@ -58,15 +58,15 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2 text-sm text-primary-foreground/60">
+              <li className="flex items-start gap-2 text-sm text-white/60">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                 123 Fresh Market Street, Mumbai, India
               </li>
-              <li className="flex items-center gap-2 text-sm text-primary-foreground/60">
+              <li className="flex items-center gap-2 text-sm text-white/60">
                 <Phone className="w-4 h-4 shrink-0" />
                 +91 98765 43210
               </li>
-              <li className="flex items-center gap-2 text-sm text-primary-foreground/60">
+              <li className="flex items-center gap-2 text-sm text-white/60">
                 <Mail className="w-4 h-4 shrink-0" />
                 hello@grocify.in
               </li>
@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center text-xs text-primary-foreground/40">
+        <div className="border-t border-white/10 mt-10 pt-6 text-center text-xs text-white/40">
           © {new Date().getFullYear()} Grocify. All rights reserved.
         </div>
       </div>

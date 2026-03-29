@@ -24,7 +24,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <Link to="/" className='flex items-center'>
                     <img src={favicon} alt="Favicon" className='h-18 w-18 object-cover rounded-full' />
-                    <span className="text-xl font-bold text-green-800">Grocify</span>
+                    <span className="text-xl font-bold text-green-800 dark:text-green-500">Grocify</span>
                 </Link>
 
                 {/* Desktop Nav */}
@@ -33,7 +33,7 @@ const Navbar = () => {
                         <Link
                             key={link.label}
                             to={link.to}
-                            className={`text-md font-medium transition-colors ${location.pathname === link.to ? "scale-105 duration-300 text-green-700" : "transition-all duration-300 text-muted-foreground hover:scale-105 hover:text-green-700"}`}
+                            className={`text-md font-medium transition-colors ${location.pathname === link.to ? "scale-105 duration-300 text-green-700 dark:text-green-500" : "transition-all duration-300 text-muted-foreground hover:scale-105 hover:text-green-700 dark:hover:text-green-500"}`}
                         >
                             {link.label}
                         </Link>
@@ -66,7 +66,7 @@ const Navbar = () => {
                     >
                         <ShoppingCart className="w-5 h-5 text-foreground" />
                         {totalItems > 0 && (
-                            <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-orange-400 text-accent-foreground text-[10px] font-bold flex items-center justify-center">
+                            <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-orange-400 text-white text-[10px] font-bold flex items-center justify-center">
                                 {totalItems}
                             </span>
                         )}
