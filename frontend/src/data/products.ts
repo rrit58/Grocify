@@ -31,3 +31,14 @@ const allProducts: Product[] = [
 ];
 
 export { allProducts };
+
+export const ordersData = Array.from({ length: 10 }, (_, i) => ({
+  id: `#GRO-28${40 + i}`,
+  date: `Mar ${25 - i}, 2026`,
+  status: i % 3 === 0 ? "Delivered" : i % 3 === 1 ? "Pending" : "Cancelled",
+  total: 200 + i * 120,
+  items: [
+    { name: "Apples (1kg)", qty: 1 + (i % 2), price: 120 },
+    { name: "Milk (2L)", qty: 1 + (i % 3), price: 60 },
+  ],
+}));
