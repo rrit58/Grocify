@@ -64,7 +64,7 @@ const SignIn = () => {
                                             type="email"
                                             placeholder=""
                                             onChange={handleChange}
-                                            // required
+                                            required
                                             className="h-12 rounded-xl bg-secondary/30 border-transparent transition-all duration-300 hover:border-green-500/50 focus-visible:bg-background focus-visible:border-green-500 focus-visible:ring-4 focus-visible:ring-green-500/10 shadow-inner"
                                         />
                                     </div>
@@ -85,7 +85,7 @@ const SignIn = () => {
                                                 placeholder=''
                                                 onChange={handleChange}
                                                 className="pr-12 h-12 rounded-xl bg-secondary/30 border-transparent transition-all duration-300 hover:border-green-500/50 focus-visible:bg-background focus-visible:border-green-500 focus-visible:ring-4 focus-visible:ring-green-500/10 shadow-inner tracking-widest placeholder:tracking-normal"
-                                            // required
+                                            required
                                             />
                                             <Button variant="ghost" type='button' onClick={() => setShowPassword(!showPassword)} className='absolute right-1 top-1 h-10 w-10 p-0 rounded-lg hover:bg-green-500/10 text-muted-foreground hover:text-green-600 transition-colors'>
                                                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}

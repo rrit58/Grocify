@@ -15,12 +15,11 @@ const menuItems = [
   { icon: Settings, label: "Account Settings", desc: "Password, email, notifications", to: "/profile/account-settings" },
 ];
 
-const user = JSON.parse(localStorage.getItem('grocify_user') || '{}')
-
 const Profile = () => {
   const { logout } = useAuth()
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
+  const user = JSON.parse(localStorage.getItem('grocify_user') || '{}')
 
   const handleLogout = async (e: any) => {
     e.preventDefault()
