@@ -21,7 +21,7 @@ app.use(express.json());
 // Route
 try {
     app.get("/", (req, res) => {
-        res.send("Welcome to Grocify Backend...🚀)");
+        res.send("Welcome to Grocify Backend...🚀");
     });
 } catch (error) {
     console.log(error.message);
