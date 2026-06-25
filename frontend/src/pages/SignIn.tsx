@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,9 +8,12 @@ import { Eye, EyeOff, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { useAuth } from '@/contexts/AuthContext'
+
 
 const SignIn = () => {
     const navigate = useNavigate()
+    const { login } = useAuth()
     const [showPassword, setShowPassword] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [formData, setFormData] = useState({
@@ -19,22 +21,20 @@ const SignIn = () => {
         password: ""
     })
 
-    const handleChange = (e: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsLoading(true);
-        try {
-            const res = await axios.post("/api/user/login", formData);
-            if (res.data.success) {
-                toast.success(res.data.message || "Logged in successfully!");
-                navigate("/");
-            }
-        } catch (error: any) {
-            toast.error(error.response?.data?.message || "Invalid credentials");
+        const res = await login(formData.email, formData.password);
+        if (res.success) {
+            toast.success(res.message);
+            navigate("/");
+        } else {
+            toast.error(res.message);
         }
         setIsLoading(false);
     }
@@ -52,7 +52,7 @@ const SignIn = () => {
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} noValidate>
                                 <div className="flex flex-col gap-6">
                                     {/* Email */}
                                     <div className="grid gap-2 group">
@@ -62,9 +62,9 @@ const SignIn = () => {
                                             name='email'
                                             value={formData.email}
                                             type="email"
-                                            placeholder="abc@example.com"
+                                            placeholder=""
                                             onChange={handleChange}
-                                            required
+                                            // required
                                             className="h-12 rounded-xl bg-secondary/30 border-transparent transition-all duration-300 hover:border-green-500/50 focus-visible:bg-background focus-visible:border-green-500 focus-visible:ring-4 focus-visible:ring-green-500/10 shadow-inner"
                                         />
                                     </div>
@@ -82,10 +82,10 @@ const SignIn = () => {
                                                 name='password'
                                                 value={formData.password}
                                                 type={showPassword ? "text" : "password"}
-                                                placeholder='••••••••'
+                                                placeholder=''
                                                 onChange={handleChange}
                                                 className="pr-12 h-12 rounded-xl bg-secondary/30 border-transparent transition-all duration-300 hover:border-green-500/50 focus-visible:bg-background focus-visible:border-green-500 focus-visible:ring-4 focus-visible:ring-green-500/10 shadow-inner tracking-widest placeholder:tracking-normal"
-                                                required
+                                            // required
                                             />
                                             <Button variant="ghost" type='button' onClick={() => setShowPassword(!showPassword)} className='absolute right-1 top-1 h-10 w-10 p-0 rounded-lg hover:bg-green-500/10 text-muted-foreground hover:text-green-600 transition-colors'>
                                                 {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -104,12 +104,12 @@ const SignIn = () => {
                                     <span className="w-full border-t border-border/60" />
                                 </div>
                                 <div className="relative flex justify-center text-xs uppercase tracking-wider">
-                                    <span className="bg-card px-4 text-muted-foreground font-bold">Or continue with</span>
+                                    <span className="px-4 text-muted-foreground font-semibold">OR</span>
                                 </div>
                             </div>
                             <Button variant="outline" type="button" disabled={isLoading} className="w-full h-12 rounded-xl font-bold transition-all duration-300 hover:bg-secondary/50 hover:scale-[1.02] active:scale-[0.98] border-border/80 shadow-sm hover:border-foreground/20">
                                 <svg className="mr-3 h-5 w-5" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
-                                Sign in with Google
+                                Continue with Google
                             </Button>
                             <p className='text-center text-sm font-medium text-muted-foreground'>
                                 Don't have an account? <Link to="/register" className='font-bold text-green-600 hover:text-green-700 hover:underline transition-colors'>Sign up</Link>

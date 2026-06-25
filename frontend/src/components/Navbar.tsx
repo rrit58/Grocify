@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import { useTheme } from "./theme-provider"
+import { useTheme } from "../contexts/ThemeContext"
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Search, User, ShoppingCart, Sun, Moon } from 'lucide-react'
 import favicon from "/favicon.png"
 import { Button } from './ui/button'
+import { useAuth } from '@/contexts/AuthContext'
 
-const totalItems = 44;
+const totalItems =9;
 
 const links = [
     { label: "Home", to: "/" },
@@ -16,11 +16,11 @@ const links = [
 ];
 
 const Navbar = () => {
-    const { theme, setTheme } = useTheme();
+    const { theme, toggleTheme } = useTheme();
     const navigate = useNavigate();
     const location = useLocation();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    
+    const { isLoggedIn } = useAuth();
+
     return (
         <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
             <div className='flex justify-between container mx-auto px-4 lg:px-8 h-16 lg:h-20 items-center'>
@@ -46,7 +46,7 @@ const Navbar = () => {
                 {/* Action */}
                 <div className='flex gap-5 items-center'>
                     <button
-                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                        onClick={() => toggleTheme()}
                         className='hidden sm:flex w-10 h-10 items-center justify-center rounded-full hover:bg-secondary transition-colors'
                     >
                         {theme === "dark" ? <Sun className="w-5 h-5 text-foreground" /> : <Moon className="w-5 h-5 text-foreground" />}
@@ -63,12 +63,12 @@ const Navbar = () => {
                     >
                         <ShoppingCart className="w-5 h-5 text-foreground" />
                         {totalItems > 0 && (
-                            <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-orange-400 text-white text-[10px] font-bold flex items-center justify-center">
+                            <span className="absolute top-0 right-0 w-4 h-4 rounded-full bg-green-600 text-foreground text-[10px] font-bold">
                                 {totalItems}
                             </span>
                         )}
                     </button>
-                    
+
                     {isLoggedIn ? (
                         <button
                             onClick={() => navigate("/profile")}
@@ -79,7 +79,6 @@ const Navbar = () => {
                     ) : (
                         <Button
                             onClick={() => {
-                                setIsLoggedIn(true);
                                 navigate("/login");
                             }}
                             className="hidden sm:flex bg-green-800 dark:bg-green-500 text-white items-center justify-center rounded-full px-5 py-2 text-sm font-bold hover:bg-green-900 dark:hover:bg-green-600 hover:text-white hover:scale-105 transition-all duration-200"

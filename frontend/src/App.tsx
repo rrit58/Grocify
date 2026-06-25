@@ -4,8 +4,13 @@ import Shop from "./pages/Shop.tsx"
 import Categories from "./pages/Categories.tsx"
 import Deals from "./pages/Deals.tsx"
 import About from "./pages/About.tsx"
+
 import SignIn from "./pages/SignIn.tsx"
 import SignUp from "./pages/SignUp.tsx"
+import Verify from "./pages/Verify.tsx"
+import ForgotPassword from "./pages/ForgotPassword.tsx"
+import ResetPassword from "./pages/ResetPassword.tsx"
+
 import Profile from "./pages/Profile.tsx"
 import MyOrders from "./pages/MyOrders.tsx"
 import Wishlist from "./pages/Wishlist.tsx"
@@ -23,8 +28,13 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/deals" element={<Deals />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<SignIn />} />
+
         <Route path="/register" element={<SignUp />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/verify" element={<Verify />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/my-orders" element={<MyOrders />} />
         <Route path="/profile/wishlist" element={<Wishlist />} />
